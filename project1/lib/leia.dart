@@ -1,1 +1,0 @@
-//aqui fica todos os arquivos importantes para o sistema e onde se deve codar o app.
