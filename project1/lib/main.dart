@@ -6,43 +6,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeWidget(),
+      home: Scaffold(
+        body: Home(),
+      ),
     );
   }
 }
 
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({super.key});
-
+class Home extends StatelessWidget {
+  const Home({super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: MyWidget(),
-    );
-  } // Esta chave estava faltando para fechar a classe HomeWidget
-}
-
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  Color color = Colors.red;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          print("Click");
-          color = (color == Colors.blue) ? Colors.red : Colors.blue;
-        });
-      },
-      child: Container(
-        color: color,
-      ),
-    );
+    return MaterialApp(
+        title: 'Teste',
+        theme: ThemeData(
+          primaryColor: Colors.white,
+        ),
+        home: Scaffold(
+          body: Column(children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              width: 100,
+              height: 120,
+              color: Colors.red,
+            ),
+            Container(
+              width: 50,
+              height: 20,
+              color: Colors.black,
+            )
+          ]),
+        ));
   }
 }
