@@ -1,41 +1,45 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Home(),
-      ),
-    );
-  }
-}
+void main() => runApp(const Home());
 
 class Home extends StatelessWidget {
   const Home({super.key});
+
+  void responder() {
+    print('Pergunta respondida?');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      'Qual é a sua cor favorita?',
+      'Qual é o seu animal favorito?',
+    ];
     return MaterialApp(
-        title: 'Teste',
-        theme: ThemeData(
-          primaryColor: Colors.white,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Perguntas'),
         ),
-        home: Scaffold(
-          body: Column(children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              width: 100,
-              height: 120,
-              color: Colors.red,
+        body: Column(
+          children: <Widget>[
+            Text(perguntas[0]),
+            ElevatedButton(
+              child: Text('Resposta 1'),
+              onPressed: responder,
             ),
-            Container(
-              width: 50,
-              height: 20,
-              color: Colors.black,
-            )
-          ]),
-        ));
+            ElevatedButton(
+              child: Text('Resposta 2'),
+              onPressed: () {
+                print('Resposta 2 selecionada');
+              },
+            ),
+            ElevatedButton(
+              child: Text('Resposta 3'),
+              onPressed: () => print('Resposta 3 selecionada'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
