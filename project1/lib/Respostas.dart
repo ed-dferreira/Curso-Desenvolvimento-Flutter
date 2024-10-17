@@ -4,13 +4,13 @@ class Respostas extends StatelessWidget {
   final String resposta;
   final void Function() OnSelection;
 
-  Respostas(this.resposta, this.OnSelection);
+  const Respostas(this.resposta, this.OnSelection, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blue[800],
@@ -18,7 +18,7 @@ class Respostas extends StatelessWidget {
         onPressed: OnSelection,
         child: Text(
           resposta,
-          style: TextStyle(fontSize: 28, color: Colors.white),
+          style: const TextStyle(fontSize: 28, color: Colors.white),
           textAlign: TextAlign.center,
         ),
       ),
