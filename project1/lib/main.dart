@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './Questao.dart';
+import './Respostas.dart';
 
 void main() => runApp(PerguntaApp());
 
@@ -16,7 +18,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelec++;
     });
-    print(_perguntaSelec);
   }
 
   @override
@@ -30,23 +31,14 @@ class _PerguntaAppState extends State<PerguntaApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Perguntas'),
+          title: const Text('Perguntinhas perguntosas'),
         ),
         body: Column(
           children: <Widget>[
-            Text(perguntas[_perguntaSelec % perguntas.length]),
-            ElevatedButton(
-              child: const Text('Resposta 1'),
-              onPressed: _responder,
-            ),
-            ElevatedButton(
-              child: const Text('Resposta 2'),
-              onPressed: _responder,
-            ),
-            ElevatedButton(
-              child: const Text('Resposta 3'),
-              onPressed: _responder,
-            ),
+            Questao(perguntas[_perguntaSelec % perguntas.length]),
+            Respostas('Resp1', _responder),
+            Respostas('Resp2', _responder),
+            Respostas('Resp3', _responder),
           ],
         ),
       ),
