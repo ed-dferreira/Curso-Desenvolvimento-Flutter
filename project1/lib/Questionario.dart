@@ -29,11 +29,11 @@ class Questionario extends StatelessWidget {
       children: [
         Questao(perguntas[perguntaSelecionada]['texto'] as String),
         ...respostas.map((resp) {
-          return Respostas(
+          return Respostas( 
             resp['texto'] as String,
             () => quandoResponder(resp['pontuacao'] as int),
           );
-        }).toList(),
+        }),
       ],
     );
   }

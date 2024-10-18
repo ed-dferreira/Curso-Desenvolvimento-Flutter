@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './Resultado.dart';
 import './Questionario.dart';
 
-void main() => runApp(PerguntaApp());
+void main() => runApp(const PerguntaApp());
 
 class PerguntaApp extends StatefulWidget {
   const PerguntaApp({super.key});
@@ -20,10 +20,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
     {
       'texto': 'Qual é a sua cor favorita?',
       'respostas': [
-        {'texto': 'Preto', 'pontuacao': 10},
+        {'texto': 'Verde', 'pontuacao': 10},
         {'texto': 'Vermelho', 'pontuacao': 5},
-        {'texto': 'Verde', 'pontuacao': 3},
-        {'texto': 'Branco', 'pontuacao': 1},
+        {'texto': 'Preto', 'pontuacao': 3},
+        {'texto': 'Marrom', 'pontuacao': 1},
       ],
     },
     {
@@ -53,7 +53,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
         _pontuacaoTotal += pontuacao;
       });
     }
-    print(_pontuacaoTotal);
+  }
+
+  void _reiniciarQuest() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
   }
 
   bool get temPerguntaSelecionada {
@@ -73,7 +79,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 quandoResponder: _responder,
               )
-            : Resultado(),
+            : Resultado(_pontuacaoTotal, _reiniciarQuest),
       ),
     );
   }
